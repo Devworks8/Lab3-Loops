@@ -31,7 +31,7 @@ namespace Lab3Loops
 {
     public static class Helper
     {
-        public static double GetInput(string message, bool isLoop=false, ushort defaults=10)
+        public static decimal GetInput(string message, bool isLoop=false, uint defaults=10)
         {
             Console.Write(message);
 
@@ -39,28 +39,40 @@ namespace Lab3Loops
             var inputCursorLeft = Console.CursorLeft;
             var inputCursorTop = Console.CursorTop;
 
-            //TODO: Need to check for m/t user input
-            double input;
-            while (!double.TryParse(Console.ReadLine(), out input))
+
+            string input;
+            decimal output;
+
+            while (true)
             {
+                input = Console.ReadLine();
+
+                if (!decimal.TryParse(input, out output) && !String.IsNullOrEmpty(input))
+                {
+                    // Erase the last error message (if there was one)
+                    Console.Write(new string(' ', input.Length));
+                    Console.ForegroundColor = ConsoleColor.Red;
+
+                    /* PadRight ensures that this line extends the width
+                     * of the console window so it erases the width of the
+                     * console window so it erases itself each time
+                     */
+                    Console.Write("\bERROR: Invalid input".PadRight(input.Length));
+                    Console.ResetColor();
+
+                    /* Set the cursor position to just after the prompt again, 
+                     * and write a blank line and reset the cursor once more.
+                     */
+                    Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
+                    Console.Write(new string(' ', input.Length));
+                    Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
+                }
+                else
+
+                {
+                    break;
+                }
                 
-                // Erase the last error message (if there was one)
-                Console.Write(new string(' ', Console.WindowWidth));
-                Console.ForegroundColor = ConsoleColor.Red;
-
-                /* PadRight ensures that this line extends the width
-                    * of the console window so it erases the width of the
-                    * console window so it erases itself each time
-                    */
-                Console.Write("\bERROR: Invalid input".PadRight(Console.WindowWidth));
-                Console.ResetColor();
-
-                /* Set the cursor position to just after the prompt again, 
-                    * and write a blank line and reset the cursor once more.
-                    */
-                Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
-                Console.Write(new string(' ', Console.WindowWidth));
-                Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
 
             }
 
@@ -68,10 +80,10 @@ namespace Lab3Loops
 
             if (isLoop)
             {
-                return !String.IsNullOrEmpty(input.ToString()) ? (double)defaults : (double)input;
+                return String.IsNullOrEmpty(input) ? (decimal)defaults : output;
             }
 
-            return input;
+            return output;
         }
     }
 }
