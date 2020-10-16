@@ -30,7 +30,6 @@ namespace Lab3Loops
 
             for (uint i = 1; i <= iterations; i += i % 2 == 0 ? (uint)1 : (uint)2)
             {
-                //Console.WriteLine(i);
                 if (pie == 0.0M)
                 {
                     pie += 4.0M / i;

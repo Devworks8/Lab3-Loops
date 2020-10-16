@@ -32,32 +32,19 @@ namespace Lab3Loops
 {
     class MainClass
     {
-        public void multitable()
-        {
-            for (int i = 1; i <= 10; i++)
-            {
-                for (int j = 1; j <= 10; j++)
-                {
-                    Console.Write(String.Format("{0, 3} ", i * j));
-                }
-                Console.WriteLine();
-            }
-            Console.ReadKey(true);
-        }
-
+        
         public static void Main(string[] args)
         {
             Console.Clear();
             Console.WriteLine("Lets find the sum, avg, min, and max.\n");
             SAMM.Calculate((ushort)Helper.GetInput("How many # do you want to enter [default=10]? ", true));
 
-            Console.WriteLine("Lets calculate \u03a0 (Pi).");
-
-            // Capture cursor position
-            //var inputCursorLeftPie = Console.CursorLeft;
-            //var inputCursorTopPie = Console.CursorTop;
-
+            Console.WriteLine("Lets calculate PI."); 
             Pie.Calculate((uint)Helper.GetInput("How many iterations? ", true));
+
+            Console.WriteLine("Let show the multiplaction table.\n");
+            MTable.ShowTable((short)Helper.GetInput(String.Format("How many # to calculate [range: 2 to {0} Default=10]? ",Console.WindowWidth/5), true), false, true);
+
         }
     }
 }

@@ -35,6 +35,7 @@
     <Compile Include="Helper.cs" />
     <Compile Include="SAMM.cs" />
     <Compile Include="Pie.cs" />
+    <Compile Include="MTable.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

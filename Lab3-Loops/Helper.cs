@@ -31,6 +31,20 @@ namespace Lab3Loops
 {
     public static class Helper
     {
+        // This method adds padding to a string to center align
+        public static string CenterAligned(string s, int width)
+        {
+            if (s.Length >= width)
+            {
+                return s;
+            }
+
+            int leftPadding = (width - s.Length) / 2;
+            int rightPadding = width - s.Length - leftPadding;
+
+            return new string(' ', leftPadding) + s + new string(' ', rightPadding);
+        }
+
         public static decimal GetInput(string message, bool isLoop=false, uint defaults=10)
         {
             Console.Write(message);
