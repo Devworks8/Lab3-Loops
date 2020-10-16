@@ -43,8 +43,8 @@ namespace Lab3Loops
             Pie.Calculate((uint)Helper.GetInput("How many iterations? ", true));
 
             Console.WriteLine("Let show the multiplaction table.\n");
-            MTable.ShowTable((short)Helper.GetInput(String.Format("How many # to calculate [range: 2 to {0} Default=10]? ",Console.WindowWidth/5), true), false, true);
-
+            MTable.ShowTable((short)Helper.GetInput(String.Format("How many # to calculate [range: 2 to {0} Default=10]? ",Console.WindowWidth/5), true), false, false, false);
+            Console.ReadKey(true);
         }
     }
 }

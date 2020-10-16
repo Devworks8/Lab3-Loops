@@ -45,7 +45,68 @@ namespace Lab3Loops
         }
 
 
-        public static void ShowTable(int range, bool showTop=false, bool showAll=false)
+        private static void Top(int range)
+        {
+            for (int i = 1; i <= range; i++)
+            {
+                for (int j = 1; j <= range; j++)
+                {
+                    if (j >= i)
+                    {
+                        Console.Write(String.Format("{0, 4} ", i * j));
+                    }
+                    else
+                    {
+                        Console.Write(String.Format("{0, 4} ", ""));
+                    }
+                    //Console.Write(String.Format("{0, 4} ", i * j));
+                }
+                Console.WriteLine();
+            }
+        }
+
+        private static void Bottom(int range)
+        {
+            for (int i = 1; i <= range; i++)
+            {
+                for (int j = 1; j <= range; j++)
+                {
+                    if (j <= i)
+                    {
+                        Console.Write(String.Format("{0, 4} ", i * j));
+                    }
+                    else
+                    {
+                        Console.Write(String.Format("{0, 4} ", ""));
+                    }
+                }
+                Console.WriteLine();
+            }
+        }
+
+        private static void Complete(int range)
+        {
+            for (int i = 1; i <= range; i++)
+            {
+                for (int j = 1; j <= range; j++)
+                {
+                    if (j == i)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write(String.Format("{0, 4} ", i * j));
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Console.Write(String.Format("{0, 4} ", i * j));
+                    }
+
+                }
+                Console.WriteLine();
+            }
+        }
+
+        public static void ShowTable(int range, bool showTop=false, bool showBot=false, bool showComplete=false, bool showAll=true)
         {
             // Capture cursor position
             var inputCursorLeft = Console.CursorLeft;
@@ -78,41 +139,30 @@ namespace Lab3Loops
             //TODO: Add header and sidebar
             if (showAll)
             {
-                //TODO: Color diag
-                for (int i = 1; i <= range; i++)
-                {
-                    for (int j = 1; j <= range; j++)
-                    {
-                        Console.Write(String.Format("{0, 4} ", i * j));
-                    }
-                    Console.WriteLine();
-                }
+                Complete(range);
+                Console.WriteLine("\n");
+                Top(range);
+                Console.WriteLine("\n");
+                Bottom(range);
+                Console.WriteLine("\n");
                 Console.ReadKey(true);
             }
-            else if (showTop)
+            else if (showComplete)
             {
-                //TODO: Only show top half
-                for (int i = 1; i <= range; i++)
-                {
-                    for (int j = 1; j <= range; j++)
-                    {
-                        Console.Write(String.Format("{0, 4} ", i * j));
-                    }
-                    Console.WriteLine();
-                }
+                Complete(range);
+                Console.WriteLine("\n");
                 Console.ReadKey(true);
             }
-            else
+            else if (showTop | showAll)
             {
-                // TODO: Only show bottom half
-                for (int i = 1; i <= range; i++)
-                {
-                    for (int j = 1; j <= range; j++)
-                    {
-                        Console.Write(String.Format("{0, 4} ", i * j));
-                    }
-                    Console.WriteLine();
-                }
+                Top(range);
+                Console.WriteLine("\n");
+                Console.ReadKey(true);
+            }
+            else if (showBot | showAll)
+            {
+                Bottom(range);
+                Console.WriteLine("\n");
                 Console.ReadKey(true);
             }
             
