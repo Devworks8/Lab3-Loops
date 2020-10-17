@@ -42,8 +42,10 @@ namespace Lab3Loops
             Console.WriteLine("Lets calculate PI.\n"); 
             Pie.Calculate((uint)Helper.GetInput("How many iterations [default=100,000]? ", new int[] { }, true, 100000));
 
-            Console.WriteLine("Let show the multiplaction table.\n");
+            Console.WriteLine("\nLet show the multiplaction table.\n");
             MTable.ShowTable();
+
+            Shapes.PrintShapes();
         }
     }
 }
