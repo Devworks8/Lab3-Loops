@@ -40,11 +40,10 @@ namespace Lab3Loops
             SAMM.Calculate((ushort)Helper.GetInput("How many # do you want to enter [default=10]? ",new int[] { }, true));
 
             Console.WriteLine("Lets calculate PI.\n"); 
-            Pie.Calculate((uint)Helper.GetInput("How many iterations? ", new int[] { }, true));
+            Pie.Calculate((uint)Helper.GetInput("How many iterations [default=100,000]? ", new int[] { }, true, 100000));
 
             Console.WriteLine("Let show the multiplaction table.\n");
             MTable.ShowTable();
-
         }
     }
 }

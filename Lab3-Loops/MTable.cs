@@ -39,16 +39,46 @@ namespace Lab3Loops
                 {
                     Console.Write(String.Format("{0, 4} ", i * j));
                 }
+
                 Console.WriteLine();
             }
+
             Console.ReadKey(true);
         }
 
+        private static string AddHeader(int range)
+        {
+            string header=@"        ";
+
+            for (int i = 1; i <= range; i++)
+            {
+                header += String.Format("{0, 4} ", i);
+            }
+
+            header += "\n        ";
+
+            for (int i = 1; i <= range; i++)
+            {
+                header += Helper.CenterAligned(String.Format("{0, 4} ", "|"), 4);
+            }
+
+            header += "\n        ";
+
+            for (int i = 1; i <= range; i++)
+            {
+                header += Helper.CenterAligned(String.Format("{0, 4} ", "V"), 4);
+            }
+ 
+            return header+="\n";
+        }
 
         private static void Top(int range)
         {
+            Console.WriteLine(AddHeader(range));
+
             for (int i = 1; i <= range; i++)
             {
+                Console.Write(String.Format("{0,4} {1,3}", i, "-> "));
                 for (int j = 1; j <= range; j++)
                 {
                     if (j >= i)
@@ -59,7 +89,6 @@ namespace Lab3Loops
                     {
                         Console.Write(String.Format("{0, 4} ", ""));
                     }
-                    //Console.Write(String.Format("{0, 4} ", i * j));
                 }
                 Console.WriteLine();
             }
@@ -67,8 +96,10 @@ namespace Lab3Loops
 
         private static void Bottom(int range)
         {
+            Console.WriteLine(AddHeader(range));
             for (int i = 1; i <= range; i++)
             {
+                Console.Write(String.Format("{0,4} {1,3}", i, "-> "));
                 for (int j = 1; j <= range; j++)
                 {
                     if (j <= i)
@@ -86,8 +117,10 @@ namespace Lab3Loops
 
         private static void Complete(int range)
         {
+            Console.WriteLine(AddHeader(range));
             for (int i = 1; i <= range; i++)
             {
+                Console.Write(String.Format("{0,4} {1,3}", i, "-> "));
                 for (int j = 1; j <= range; j++)
                 {
                     if (j == i)
@@ -100,7 +133,6 @@ namespace Lab3Loops
                     {
                         Console.Write(String.Format("{0, 4} ", i * j));
                     }
-
                 }
                 Console.WriteLine();
             }
@@ -108,86 +140,10 @@ namespace Lab3Loops
 
         public static void ShowTable()
         {
-            
+            int range = (int)Helper.GetInput(String.Format("How many # to calculate [range: 2 to {0} [default=10]? ", Console.WindowWidth / 5), new int[] { 2, Console.WindowWidth / 5 }, true);
 
-            int range;
-            range = (int)Helper.GetInput(String.Format("How many # to calculate [range: 2 to {0} Default=10]? ", Console.WindowWidth / 5), new int[] { 2, Console.WindowWidth / 5 }, true);
+            int selection = (int)Helper.GetInput("Display pattern: 1=Top, 2=Bottom, 3=Full, 4=All [default=4]: ", new int[] { 1, 4 }, true, 4);
 
-
-
-            //// Capture cursor position
-            //var inputCursorLeft = Console.CursorLeft;
-            //var inputCursorTop = Console.CursorTop;
-
-            //while (range >1 ^ range < Console.WindowWidth / 5+1)
-            //{
-            //    Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
-            //    Console.Write(new string(' ', Console.WindowWidth));
-            //    Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
-            //    range = (int)Helper.GetInput(String.Format("How many # to calculate [range: 2 to {0} Default=10]? ", Console.WindowWidth / 5), true);
-
-
-            //    //// Erase the last error message (if there was one)
-            //    //Console.Write(new string(' ', Console.WindowWidth));
-            //    //Console.ForegroundColor = ConsoleColor.Red;
-
-            //    ///* PadRight ensures that this line extends the width
-            //    // * of the console window so it erases the width of the
-            //    // * console window so it erases itself each time
-            //    // */
-            //    //Console.Write("\bERROR: Invalid input".PadRight(Console.WindowWidth));
-            //    //Console.ResetColor();
-
-            //    ///* Set the cursor position to just after the prompt again, 
-            //    // * and write a blank line and reset the cursor once more.
-            //    // */
-            //    //Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
-            //    //Console.Write(new string(' ', Console.WindowWidth));
-            //    //Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
-
-
-
-            //}
-
-            //byte selection;
-            //selection = (byte)Helper.GetInput("Display pattern: 1=Top, 2=Bottom, 3=Full, 4=All: ");
-
-            ////inputCursorLeft = Console.CursorLeft;
-            ////inputCursorTop = Console.CursorTop-2;
-
-            //while (selection > 0 ^ selection < 5)
-            //{
-            //    Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
-            //    Console.Write(new string(' ', Console.WindowWidth));
-            //    Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
-            //    selection = (byte)Helper.GetInput("Display pattern: 1=Top, 2=Bottom, 3=Full, 4=All: ");
-
-
-            //    //// Erase the last error message (if there was one)
-            //    //Console.Write(new string(' ', Console.WindowWidth));
-            //    //Console.ForegroundColor = ConsoleColor.Red;
-
-            //    ///* PadRight ensures that this line extends the width
-            //    // * of the console window so it erases the width of the
-            //    // * console window so it erases itself each time
-            //    // */
-            //    //Console.Write("\bERROR: Invalid input".PadRight(Console.WindowWidth));
-            //    //Console.ResetColor();
-
-            //    ///* Set the cursor position to just after the prompt again, 
-            //    // * and write a blank line and reset the cursor once more.
-            //    // */
-            //    //Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
-            //    //Console.Write(new string(' ', Console.WindowWidth));
-            //    //Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
-
-
-            //    selection = (byte)Helper.GetInput("Display pattern: 1=Top, 2=Bottom, 3=Full, 4=All: ");
-            //}
-
-            int selection;
-            selection = (int)Helper.GetInput("Display pattern: 1=Top, 2=Bottom, 3=Full, 4=All: ", new int[] { 1, 4 });
-            //TODO: Add header and sidebar
             if (selection == 4)
             {
                 Complete(range);

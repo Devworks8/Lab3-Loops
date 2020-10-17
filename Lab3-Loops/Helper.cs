@@ -26,7 +26,9 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 using System;
+
 namespace Lab3Loops
 {
     public static class Helper
@@ -45,7 +47,7 @@ namespace Lab3Loops
             return new string(' ', leftPadding) + s + new string(' ', rightPadding);
         }
 
-        public static decimal GetInput(string message, int[] vrange, bool isLoop = false, uint defaults=10)
+        public static decimal GetInput(string message, int[] vrange, bool isRange = false, uint defaults=10)
         {
             
             Console.Write(message);
@@ -85,7 +87,7 @@ namespace Lab3Loops
                 else if (vrange.Length > 0)
                 {
                     //TODO: Logic not working as needed. It allows NaNs
-                    if ((int)output < vrange[0] | (int)output > vrange[1])
+                    if ((int)output < vrange[0] | (int)output > vrange[1] && !String.IsNullOrEmpty(input))
                     {
                         // Erase the last error message (if there was one)
                         Console.Write(new string(' ', input.Length));
@@ -105,18 +107,21 @@ namespace Lab3Loops
                         Console.Write(new string(' ', input.Length));
                         Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
                     }
+                    else
+                    {
+                        break;
+                    }
                 }
                 else
                 {
                     break;
                 }
-                break;
 
             }
 
             Console.Write(new string(' ', Console.WindowWidth));
 
-            if (isLoop)
+            if (isRange)
             {
                 return String.IsNullOrEmpty(input) ? (decimal)defaults : output;
             }

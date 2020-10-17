@@ -46,8 +46,8 @@ namespace Lab3Loops
                 }
             }
 
-            Console.WriteLine("{0,30}{1}","The value calculate is: ",pie);
-            Console.WriteLine("{0,30}{1}","The value reported by Math.PI() is: ",Math.PI);
+            Console.WriteLine("{0,40}{1,-30}","The value calculate is: ",pie);
+            Console.WriteLine("{0,40}{1,-30}","The value reported by Math.PI() is: ",Math.PI);
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey(true);
         }
