@@ -1,4 +1,11 @@
-﻿//
+﻿// Name: Christian Lachapelle
+//  Student #: A00230066
+//
+//  Title: Lab3 - Loops
+//  Version: 1.0
+//
+//  Description: Perform a number of opertions using loops.
+//
 //  Shapes.cs
 //
 //  Author:
@@ -18,6 +25,7 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 using System;
 using System.Collections.Generic;
 
@@ -25,6 +33,7 @@ namespace Lab3Loops
 {
     public static class Patterns
     {
+        // Square pattern matrix
         private static byte[,] square = new byte[7, 7] {
             { 1, 1, 1, 1, 1, 1, 1 },
             { 1, 1, 1, 1, 1, 1, 1 },
@@ -34,6 +43,7 @@ namespace Lab3Loops
             { 1, 1, 1, 1, 1, 1, 1 },
             { 1, 1, 1, 1, 1, 1, 1 }};
 
+        // Rectangle pattern matrix
         private static byte[,] rectangle = new byte[7, 7] {
             { 1, 1, 1, 1, 1, 1, 1 },
             { 1, 1, 1, 1, 1, 1, 1 },
@@ -43,6 +53,7 @@ namespace Lab3Loops
             { 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0 }};
 
+        // Parallelogram Left pattern matrix
         private static byte[,] parallelLeft = new byte[7, 7] {
             { 0, 0, 1, 1, 1, 1, 1 },
             { 0, 1, 1, 1, 1, 1, 0 },
@@ -52,6 +63,7 @@ namespace Lab3Loops
             { 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0 }};
 
+        // Parallelogram Right pattern matrix
         private static byte[,] parallelRight = new byte[7, 7] {
             { 1, 1, 1, 1, 1, 0, 0 },
             { 0, 1, 1, 1, 1, 1, 0 },
@@ -61,6 +73,7 @@ namespace Lab3Loops
             { 0, 0, 0, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 0, 0 }};
 
+        // Triangle Bottom Left pattern matrix
         private static byte[,] triangleBottomLeft = new byte[7, 7] {
             { 1, 0, 0, 0, 0, 0, 0 },
             { 1, 1, 0, 0, 0, 0, 0 },
@@ -70,6 +83,7 @@ namespace Lab3Loops
             { 1, 1, 1, 1, 1, 1, 0 },
             { 1, 1, 1, 1, 1, 1, 1 }};
 
+        // Triangle Bottom Right pattern matrix
         private static byte[,] triangleBottomRight = new byte[7, 7] {
             { 0, 0, 0, 0, 0, 0, 1 },
             { 0, 0, 0, 0, 0, 1, 1 },
@@ -79,6 +93,7 @@ namespace Lab3Loops
             { 0, 1, 1, 1, 1, 1, 1 },
             { 1, 1, 1, 1, 1, 1, 1 }};
 
+        // Triangle Top Left pattern matrix
         private static byte[,] trianlgeTopLeft = new byte[7, 7] {
             { 1, 1, 1, 1, 1, 1, 1 },
             { 1, 1, 1, 1, 1, 1, 0 },
@@ -88,6 +103,7 @@ namespace Lab3Loops
             { 1, 1, 0, 0, 0, 0, 0 },
             { 1, 0, 0, 0, 0, 0, 0 }};
 
+        // Triangle Top Right pattern matrix
         private static byte[,] triangleTopRight = new byte[7, 7] {
             { 1, 1, 1, 1, 1, 1, 1 },
             { 0, 1, 1, 1, 1, 1, 1 },
@@ -97,6 +113,7 @@ namespace Lab3Loops
             { 0, 0, 0, 0, 0, 1, 1 },
             { 0, 0, 0, 0, 0, 0, 1 }};
 
+        // Diamond pattern matrix
         private static byte[,] diamond = new byte[7, 7] {
             { 0, 0, 0, 1, 0, 0, 0 },
             { 0, 0, 1, 1, 1, 0, 0 },
@@ -106,6 +123,7 @@ namespace Lab3Loops
             { 0, 0, 1, 1, 1, 0, 0 },
             { 0, 0, 0, 1, 0, 0, 0 }};
 
+        // Circle pattern matrix
         private static byte[,] circle = new byte[7, 7] {
             { 0, 0, 1, 1, 1, 0, 0 },
             { 0, 1, 1, 1, 1, 1, 0 },
@@ -130,6 +148,7 @@ namespace Lab3Loops
 
     public static class Shapes
     {
+        // Parse and display the pattern matrix
         private static void ParsePattern(byte[,] pattern)
         {
             for (byte i = 0; i < 7; ++i)
@@ -190,6 +209,7 @@ namespace Lab3Loops
 
                     input = String.IsNullOrEmpty(input) ? "11" : input;
 
+                    // Check if input is a valid number.
                     bool num;
                     try
                     {
@@ -203,8 +223,10 @@ namespace Lab3Loops
 
                     if (num)
                     {
+                        // Is the input valid
                         if (Convert.ToByte(input) > 0 | Convert.ToByte(input) < 12)
                         {
+                            // Display all patterns.
                             if (Convert.ToByte(input) == 11)
                             {
                                 for (byte shape = 1; shape < 11; ++shape)
@@ -213,11 +235,13 @@ namespace Lab3Loops
                                     Console.WriteLine();
                                 }
                             }
+                            // Display user selected pattern.
                             else
                             {
                                 ParsePattern(Patterns.pattern[Convert.ToByte(input)]);
                             }
                         }
+                        // Display error message if not in range
                         else
                         {
                             // Erase the last error message (if there was one)
@@ -225,20 +249,21 @@ namespace Lab3Loops
                             Console.ForegroundColor = ConsoleColor.Red;
 
                             /* PadRight ensures that this line extends the width
-                                * of the console window so it erases the width of the
-                                * console window so it erases itself each time
-                                */
+                             * of the console window so it erases the width of the
+                             * console window so it erases itself each time
+                             */
                             Console.Write("\bERROR: Invalid input".PadRight(input.Length));
                             Console.ResetColor();
 
                             /* Set the cursor position to just after the prompt again, 
-                                * and write a blank line and reset the cursor once more.
-                                */
+                             * and write a blank line and reset the cursor once more.
+                             */
                             Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
                             Console.Write(new string(' ', input.Length));
                             Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
                         }
                     }
+                    // Display error message if not a number
                     else
                     {
                         // Erase the last error message (if there was one)
@@ -246,15 +271,15 @@ namespace Lab3Loops
                         Console.ForegroundColor = ConsoleColor.Red;
 
                         /* PadRight ensures that this line extends the width
-                            * of the console window so it erases the width of the
-                            * console window so it erases itself each time
-                            */
+                         * of the console window so it erases the width of the
+                         * console window so it erases itself each time
+                         */
                         Console.Write("\bERROR: Invalid input".PadRight(input.Length));
                         Console.ResetColor();
 
                         /* Set the cursor position to just after the prompt again, 
-                            * and write a blank line and reset the cursor once more.
-                            */
+                         * and write a blank line and reset the cursor once more.
+                         */
                         Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
                         Console.Write(new string(' ', input.Length));
                         Console.SetCursorPosition(inputCursorLeft, inputCursorTop);

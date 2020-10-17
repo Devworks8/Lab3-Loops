@@ -1,11 +1,10 @@
 ﻿// Name: Christian Lachapelle
 //  Student #: A00230066
 //
-//  Title: 
-//  Version: 
+//  Title: Lab3 - Loops
+//  Version: 1.0
 //
-//  Description: 
-//
+//  Description: Perform a number of opertions using loops.
 //
 // MTable.cs
 //
@@ -26,26 +25,14 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 using System;
+
 namespace Lab3Loops
 {
     public static class MTable
     {
-        public static void multitable()
-        {
-            for (int i = 1; i <= 10; i++)
-            {
-                for (int j = 1; j <= 10; j++)
-                {
-                    Console.Write(String.Format("{0, 4} ", i * j));
-                }
-
-                Console.WriteLine();
-            }
-
-            Console.ReadKey(true);
-        }
-
+        // Add header to multiplication table.
         private static string AddHeader(int range)
         {
             string header=@"        ";
@@ -72,6 +59,7 @@ namespace Lab3Loops
             return header+="\n";
         }
 
+        // Show top half of the multiplication table.
         private static void Top(int range)
         {
             Console.WriteLine(AddHeader(range));
@@ -94,6 +82,7 @@ namespace Lab3Loops
             }
         }
 
+        // Show bottom half of the multiplication table.
         private static void Bottom(int range)
         {
             Console.WriteLine(AddHeader(range));
@@ -115,6 +104,7 @@ namespace Lab3Loops
             }
         }
 
+        // Show complete multiplication table.
         private static void Complete(int range)
         {
             Console.WriteLine(AddHeader(range));
@@ -138,12 +128,14 @@ namespace Lab3Loops
             }
         }
 
+        // Ask the user how to display the multiplication table.
         public static void ShowTable()
         {
             int range = (int)Helper.GetInput(String.Format("How many # to calculate [range: 2 to {0} [default=10]? ", Console.WindowWidth / 5), new int[] { 2, Console.WindowWidth / 5 }, true);
 
             int selection = (int)Helper.GetInput("Display pattern: 1=Top, 2=Bottom, 3=Full, 4=All [default=4]: ", new int[] { 1, 4 }, true, 4);
 
+            // Display all variations of the multiplcation table.
             if (selection == 4)
             {
                 Complete(range);
@@ -156,18 +148,21 @@ namespace Lab3Loops
                 Console.WriteLine("\n");
                 Console.ReadKey(true);
             }
+            // Display the complete multiplication table.
             else if (selection == 3)
             {
                 Complete(range);
                 Console.WriteLine("\n");
                 Console.ReadKey(true);
             }
+            // Display the bottom half of the multiplication table.
             else if (selection == 2)
             {
                 Bottom(range);
                 Console.WriteLine("\n");
                 Console.ReadKey(true);
             }
+            // Display the top half of the multiplication table.
             else if (selection == 1)
             {
                 Top(range);

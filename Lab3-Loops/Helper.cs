@@ -1,10 +1,10 @@
 ﻿// Name: Christian Lachapelle
 //  Student #: A00230066
 //
-//  Title: 
-//  Version: 
+//  Title: Lab3 - Loops
+//  Version: 1.0
 //
-//  Description: 
+//  Description: Perform a number of opertions using loops.
 //
 //
 // Helper.cs
@@ -47,6 +47,13 @@ namespace Lab3Loops
             return new string(' ', leftPadding) + s + new string(' ', rightPadding);
         }
 
+        /*
+         * This method gets valid user input.
+         * Parameters: message: message to display
+         *              vrange: min/max values of a selection range
+         *             isRange: is the input used for a range
+         *            defaults: value passed if no input received.
+         */
         public static decimal GetInput(string message, int[] vrange, bool isRange = false, uint defaults=10)
         {
             
@@ -64,6 +71,7 @@ namespace Lab3Loops
             {
                 input = Console.ReadLine();
 
+                // Input is valid and not empty
                 if (!decimal.TryParse(input, out output) && !String.IsNullOrEmpty(input))
                 {
                     // Erase the last error message (if there was one)
@@ -84,9 +92,10 @@ namespace Lab3Loops
                     Console.Write(new string(' ', input.Length));
                     Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
                 }
+                // Is a range provided
                 else if (vrange.Length > 0)
                 {
-                    //TODO: Logic not working as needed. It allows NaNs
+                    // Is the range invalid
                     if ((int)output < vrange[0] | (int)output > vrange[1] && !String.IsNullOrEmpty(input))
                     {
                         // Erase the last error message (if there was one)
@@ -109,20 +118,24 @@ namespace Lab3Loops
                     }
                     else
                     {
+                        // Continue if range is valid
                         break;
                     }
                 }
                 else
                 {
+                    // Continue is no range provided
                     break;
                 }
 
             }
 
+            // Erase the last error message (if there was one)
             Console.Write(new string(' ', Console.WindowWidth));
 
             if (isRange)
             {
+                // Return default if input is empty.
                 return String.IsNullOrEmpty(input) ? (decimal)defaults : output;
             }
 

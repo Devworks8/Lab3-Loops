@@ -1,4 +1,11 @@
-﻿//
+﻿// Name: Christian Lachapelle
+//  Student #: A00230066
+//
+//  Title: Lab3 - Loops
+//  Version: 1.0
+//
+//  Description: Perform a number of opertions using loops.
+//
 //  Pie.cs
 //
 //  Author:
@@ -18,11 +25,14 @@
 //
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 using System;
+
 namespace Lab3Loops
 {
     public static class Pie
     {
+        // Calculate PI and display results.
         public static void Calculate(uint iterations)
         {
             bool isAdd = false;
