@@ -69,13 +69,19 @@ namespace Lab3Loops
                 Console.Write(String.Format("{0,4} {1,3}", i, "-> "));
                 for (int j = 1; j <= range; j++)
                 {
-                    if (j >= i)
+                    if (j == i)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write(String.Format("{0, 4} ", i * j));
+                        Console.ResetColor();
+                    }
+                    else if (j > i)
                     {
                         Console.Write(String.Format("{0, 4} ", i * j));
                     }
                     else
                     {
-                        Console.Write(String.Format("{0, 4} ", ""));
+                        Console.Write(String.Format("{0, 4} ", "----"));
                     }
                 }
                 Console.WriteLine();
@@ -91,13 +97,19 @@ namespace Lab3Loops
                 Console.Write(String.Format("{0,4} {1,3}", i, "-> "));
                 for (int j = 1; j <= range; j++)
                 {
-                    if (j <= i)
+                    if (j == i)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write(String.Format("{0, 4} ", i * j));
+                        Console.ResetColor();
+                    }
+                    else if (j < i)
                     {
                         Console.Write(String.Format("{0, 4} ", i * j));
                     }
                     else
                     {
-                        Console.Write(String.Format("{0, 4} ", ""));
+                        Console.Write(String.Format("{0, 4} ", "|"));
                     }
                 }
                 Console.WriteLine();
@@ -131,7 +143,7 @@ namespace Lab3Loops
         // Ask the user how to display the multiplication table.
         public static void ShowTable()
         {
-            int range = (int)Helper.GetInput(String.Format("How many # to calculate [range: 2 to {0} [default=10]? ", Console.WindowWidth / 5), new int[] { 2, Console.WindowWidth / 5 }, true);
+            int range = (int)Helper.GetInput(String.Format("How many # to calculate [range: 2 to {0} [default=10]? ", Console.WindowWidth / 6), new int[] { 2, Console.WindowWidth / 6 }, true);
 
             int selection = (int)Helper.GetInput("Display pattern: 1=Top, 2=Bottom, 3=Full, 4=All [default=4]: ", new int[] { 1, 4 }, true, 4);
 

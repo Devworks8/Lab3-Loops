@@ -87,14 +87,11 @@ namespace Lab3Loops
 
             for (ushort i = 0; i < iterations; ++i)
             {
+                //TODO: The user input isn't clearing.
                 Console.WriteLine($"Values entered: [{values}]");
 
-                Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
-                Console.Write(new string(' ', Console.WindowWidth));
-                Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
-
                 entries[i] = Helper.GetInput("Enter #: ", new int[] { });
-
+                
                 // Add first value in array without a comma.
                 if (i == 0)
                 {
