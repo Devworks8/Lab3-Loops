@@ -87,7 +87,6 @@ namespace Lab3Loops
 
             for (ushort i = 0; i < iterations; ++i)
             {
-                //TODO: The user input isn't clearing.
                 Console.WriteLine($"Values entered: [{values}]");
 
                 entries[i] = Helper.GetInput("Enter #: ", new int[] { });
@@ -107,6 +106,7 @@ namespace Lab3Loops
                 if (i < iterations - 1)
                 {
                     Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
+                    Console.Write(new string(' ', Console.WindowWidth));
                     Console.Write(new string(' ', Console.WindowWidth));
                     Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
                 }
