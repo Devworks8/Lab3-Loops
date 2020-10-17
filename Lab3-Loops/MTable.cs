@@ -106,62 +106,115 @@ namespace Lab3Loops
             }
         }
 
-        public static void ShowTable(int range, bool showTop=false, bool showBot=false, bool showComplete=false, bool showAll=true)
+        public static void ShowTable()
         {
-            // Capture cursor position
-            var inputCursorLeft = Console.CursorLeft;
-            var inputCursorTop = Console.CursorTop-2;
+            
 
-            while (range >=2 ^ range <= Console.WindowWidth / 5)
-            {
-                // Erase the last error message (if there was one)
-                Console.Write(new string(' ', Console.WindowWidth));
-                Console.ForegroundColor = ConsoleColor.Red;
-
-                /* PadRight ensures that this line extends the width
-                 * of the console window so it erases the width of the
-                 * console window so it erases itself each time
-                 */
-                Console.Write("\bERROR: Invalid input".PadRight(Console.WindowWidth));
-                Console.ResetColor();
-
-                /* Set the cursor position to just after the prompt again, 
-                 * and write a blank line and reset the cursor once more.
-                 */
-                Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
-                Console.Write(new string(' ', Console.WindowWidth));
-                Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
+            int range;
+            range = (int)Helper.GetInput(String.Format("How many # to calculate [range: 2 to {0} Default=10]? ", Console.WindowWidth / 5), new int[] { 2, Console.WindowWidth / 5 }, true);
 
 
-                range = (int)Helper.GetInput(String.Format("How many # to calculate [range: 2 to {0} Default=10]? ", Console.WindowWidth / 5), true);
-            }
 
+            //// Capture cursor position
+            //var inputCursorLeft = Console.CursorLeft;
+            //var inputCursorTop = Console.CursorTop;
+
+            //while (range >1 ^ range < Console.WindowWidth / 5+1)
+            //{
+            //    Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
+            //    Console.Write(new string(' ', Console.WindowWidth));
+            //    Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
+            //    range = (int)Helper.GetInput(String.Format("How many # to calculate [range: 2 to {0} Default=10]? ", Console.WindowWidth / 5), true);
+
+
+            //    //// Erase the last error message (if there was one)
+            //    //Console.Write(new string(' ', Console.WindowWidth));
+            //    //Console.ForegroundColor = ConsoleColor.Red;
+
+            //    ///* PadRight ensures that this line extends the width
+            //    // * of the console window so it erases the width of the
+            //    // * console window so it erases itself each time
+            //    // */
+            //    //Console.Write("\bERROR: Invalid input".PadRight(Console.WindowWidth));
+            //    //Console.ResetColor();
+
+            //    ///* Set the cursor position to just after the prompt again, 
+            //    // * and write a blank line and reset the cursor once more.
+            //    // */
+            //    //Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
+            //    //Console.Write(new string(' ', Console.WindowWidth));
+            //    //Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
+
+
+
+            //}
+
+            //byte selection;
+            //selection = (byte)Helper.GetInput("Display pattern: 1=Top, 2=Bottom, 3=Full, 4=All: ");
+
+            ////inputCursorLeft = Console.CursorLeft;
+            ////inputCursorTop = Console.CursorTop-2;
+
+            //while (selection > 0 ^ selection < 5)
+            //{
+            //    Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
+            //    Console.Write(new string(' ', Console.WindowWidth));
+            //    Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
+            //    selection = (byte)Helper.GetInput("Display pattern: 1=Top, 2=Bottom, 3=Full, 4=All: ");
+
+
+            //    //// Erase the last error message (if there was one)
+            //    //Console.Write(new string(' ', Console.WindowWidth));
+            //    //Console.ForegroundColor = ConsoleColor.Red;
+
+            //    ///* PadRight ensures that this line extends the width
+            //    // * of the console window so it erases the width of the
+            //    // * console window so it erases itself each time
+            //    // */
+            //    //Console.Write("\bERROR: Invalid input".PadRight(Console.WindowWidth));
+            //    //Console.ResetColor();
+
+            //    ///* Set the cursor position to just after the prompt again, 
+            //    // * and write a blank line and reset the cursor once more.
+            //    // */
+            //    //Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
+            //    //Console.Write(new string(' ', Console.WindowWidth));
+            //    //Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
+
+
+            //    selection = (byte)Helper.GetInput("Display pattern: 1=Top, 2=Bottom, 3=Full, 4=All: ");
+            //}
+
+            int selection;
+            selection = (int)Helper.GetInput("Display pattern: 1=Top, 2=Bottom, 3=Full, 4=All: ", new int[] { 1, 4 });
             //TODO: Add header and sidebar
-            if (showAll)
-            {
-                Complete(range);
-                Console.WriteLine("\n");
-                Top(range);
-                Console.WriteLine("\n");
-                Bottom(range);
-                Console.WriteLine("\n");
-                Console.ReadKey(true);
-            }
-            else if (showComplete)
+            if (selection == 4)
             {
                 Complete(range);
                 Console.WriteLine("\n");
                 Console.ReadKey(true);
-            }
-            else if (showTop | showAll)
-            {
                 Top(range);
                 Console.WriteLine("\n");
                 Console.ReadKey(true);
+                Bottom(range);
+                Console.WriteLine("\n");
+                Console.ReadKey(true);
             }
-            else if (showBot | showAll)
+            else if (selection == 3)
+            {
+                Complete(range);
+                Console.WriteLine("\n");
+                Console.ReadKey(true);
+            }
+            else if (selection == 2)
             {
                 Bottom(range);
+                Console.WriteLine("\n");
+                Console.ReadKey(true);
+            }
+            else if (selection == 1)
+            {
+                Top(range);
                 Console.WriteLine("\n");
                 Console.ReadKey(true);
             }

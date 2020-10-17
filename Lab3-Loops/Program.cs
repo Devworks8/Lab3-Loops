@@ -37,14 +37,14 @@ namespace Lab3Loops
         {
             Console.Clear();
             Console.WriteLine("Lets find the sum, avg, min, and max.\n");
-            SAMM.Calculate((ushort)Helper.GetInput("How many # do you want to enter [default=10]? ", true));
+            SAMM.Calculate((ushort)Helper.GetInput("How many # do you want to enter [default=10]? ",new int[] { }, true));
 
-            Console.WriteLine("Lets calculate PI."); 
-            Pie.Calculate((uint)Helper.GetInput("How many iterations? ", true));
+            Console.WriteLine("Lets calculate PI.\n"); 
+            Pie.Calculate((uint)Helper.GetInput("How many iterations? ", new int[] { }, true));
 
             Console.WriteLine("Let show the multiplaction table.\n");
-            MTable.ShowTable((short)Helper.GetInput(String.Format("How many # to calculate [range: 2 to {0} Default=10]? ",Console.WindowWidth/5), true), false, false, false);
-            Console.ReadKey(true);
+            MTable.ShowTable();
+
         }
     }
 }

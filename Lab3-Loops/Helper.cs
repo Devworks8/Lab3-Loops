@@ -45,8 +45,9 @@ namespace Lab3Loops
             return new string(' ', leftPadding) + s + new string(' ', rightPadding);
         }
 
-        public static decimal GetInput(string message, bool isLoop=false, uint defaults=10)
+        public static decimal GetInput(string message, int[] vrange, bool isLoop = false, uint defaults=10)
         {
+            
             Console.Write(message);
 
             // Capture cursor position
@@ -81,12 +82,35 @@ namespace Lab3Loops
                     Console.Write(new string(' ', input.Length));
                     Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
                 }
-                else
+                else if (vrange.Length > 0)
+                {
+                    //TODO: Logic not working as needed. It allows NaNs
+                    if ((int)output < vrange[0] | (int)output > vrange[1])
+                    {
+                        // Erase the last error message (if there was one)
+                        Console.Write(new string(' ', input.Length));
+                        Console.ForegroundColor = ConsoleColor.Red;
 
+                        /* PadRight ensures that this line extends the width
+                         * of the console window so it erases the width of the
+                         * console window so it erases itself each time
+                         */
+                        Console.Write("\bERROR: Invalid input".PadRight(input.Length));
+                        Console.ResetColor();
+
+                        /* Set the cursor position to just after the prompt again, 
+                         * and write a blank line and reset the cursor once more.
+                         */
+                        Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
+                        Console.Write(new string(' ', input.Length));
+                        Console.SetCursorPosition(inputCursorLeft, inputCursorTop);
+                    }
+                }
+                else
                 {
                     break;
                 }
-                
+                break;
 
             }
 

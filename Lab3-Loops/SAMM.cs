@@ -86,7 +86,7 @@ namespace Lab3Loops
             {
                 Console.WriteLine($"Values entered: [{values}]");
 
-                entries[i] = Helper.GetInput("Enter #: ");
+                entries[i] = Helper.GetInput("Enter #: ", new int[] { });
 
                 if (i == 0)
                 {
