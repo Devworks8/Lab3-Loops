@@ -175,19 +175,21 @@ namespace Lab3Loops
 {8,-40}
 {9,-40}
 {10,-40}
+{11,-40}
 
 ",
-"1) Square",
-"2) Rectangle",
-"3) Parallelogram Left",
-"4) Parallelogram Right",
-"5) Triangle Bottom Left",
-"6) Triangle Bottom Right",
-"7) Triangle Top Left",
-"8) Triangle Top Right",
-"9) Diamond",
+" 1) Square",
+" 2) Rectangle",
+" 3) Parallelogram Left",
+" 4) Parallelogram Right",
+" 5) Triangle Bottom Left",
+" 6) Triangle Bottom Right",
+" 7) Triangle Top Left",
+" 8) Triangle Top Right",
+" 9) Diamond",
 "10) Circle",
-"11) All");
+"11) All",
+" 0) Quit");
 
 
             Console.Write("\nDo you want to print shapes? [Y/n] ");
@@ -223,8 +225,13 @@ namespace Lab3Loops
 
                     if (num)
                     {
+                        // Quit
+                        if (Convert.ToByte(input) == 0)
+                        {
+                            break;
+                        }
                         // Is the input valid
-                        if (Convert.ToByte(input) > 0 | Convert.ToByte(input) < 12)
+                        else if (Convert.ToByte(input) > 0 | Convert.ToByte(input) < 12)
                         {
                             // Display all patterns.
                             if (Convert.ToByte(input) == 11)
